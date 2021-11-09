@@ -16,11 +16,16 @@ class Person:
 class Manager (Person):
 
     def __init__(self, name, pay):
-        Person.__init__(self, name, 'mgr', pay)
+        self.person = Person(name, 'mgr', pay)
 
     def giveRaise(self, persent, bonus = 0.10):
-        Person.giveRaise(self, persent + bonus)
+        self.person.giveRaise(persent + bonus)
 
+    def __getattr__ (self, attr):
+        return getattr (self .person, attr) # Делегировать все остальные атрибуты
+
+    def __repr__ (self) :
+        return str (self.person)
 
 if __name__ == '__main__':
     bob = Person('Bob Smith')

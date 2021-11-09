@@ -1,4 +1,6 @@
 class Person:
+    sample = "sample"
+
     def __init__(self, name, job = None, pay = 0):
         self.name = name
         self.job = job
@@ -25,15 +27,14 @@ class Manager (Person):
 if __name__ == '__main__':
     bob = Person('Bob Smith')
     sue = Person('Sue Jones', job = 'dex', pay = 10000)
-    print(bob)
-    print(sue)
-    print(bob.lastName(), sue.lastName())
-    sue.giveRaise(.10)
-    print(sue)
     tom = Manager('Tom Jones', 50000)
-    tom.giveRaise(.10)
-    print(tom.lastName())
-    print(tom)
 
     print(bob.__dict__)
-    print(tom.__dict__)
+    print(bob.__dict__.keys())
+    print(dir(bob))
+    print(bob.__class__)
+    print(bob.__class__.__name__)
+    print(tom.__class__)
+    print(tom.__class__.__name__)
+
+    print(list(name for name in dir(bob) if not name.startswith('__')))
